@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!--bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+      
+    <style>      
+
+.page {
+  background: linear-gradient(#4f2ad1, #d14053);
+}
+
+.login-container {
+  background-color: white;
+  max-width: 350px;
+  z-index: 100;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 37%;
+  padding-top: 100px;
+  
+}
+
+.logoImg {
+  height: 100px;
+  width: 110px;
+  border-radius: 50%;
+  margin-left: 35%;
+  margin-top: -60px;
+}
+
+.header3 {
+  color: black;
+  text-align: center;
+}
+
+.form-control {
+  
+  border-radius: 1px;
+  color: inherit;
+  display: block;
+  padding: 6px 12px;
+  width: 90%;
+  
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.form-control {
+  box-shadow: none;
+}
+
+.checkBox {
+  text-align: center;
+}
+
+.forget-pass {
+  text-align: center;
+  color: black;
+}
+
+.forget-pass :hover {
+  
+  color: blue;
+  transition: 0.3s;
+}
+
+.forget-password{
+  text-align: center;
+}
+
+.log-butt {
+  width: 90%;
+  height: 45px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
+  background-color: rgb(69, 69, 212);
+
+}
+
+.last-row {
+  background-color: burlywood;
+  height: 55px;
+  width: 100%;
+  margin-top: 45px;
+}
+
+.link-sign {
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+</style>
+
+</head>
+
+<body class="page">
+  <div class="login-container">
+    <div>
+      <h1>
+        <a href="/"><img src="images/newLogo.jpg" class="logoImg"/></a>
+      </h1>
+    </div>
+    <h3 class="header3">Sign In Web Hosting</h3>
+    
+    {{#if errorMsg}}
+    <div
+      class="card text-white bg-danger"
+      style="margin-bottom: 10px; width:350px"
+    >
+      <div class="card-header">Errors</div>
+      <div class="card-body">
+        {{errorMsg}}
+      </div>
+    </div>
+  {{/if}}
+
+
+    <form method="POST" action="/sign_in" name="loginForm">
+      <div >
+
+      </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            name="Iusername"
+            id="Iusername"
+            value="{{userLoginData.username}}"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="password"
+            name="Ipassword"
+            id="Ipassword"
+            value="{{userLoginData.password}}"
+          />
+        </div>
+
+        <br>
+        <div class="checkBox">
+          <input
+          type="checkbox" 
+          id="Icheckbox" 
+          name="Icheckbox">
+          
+          <label for="terms"> Remember Me</label><br><br>
+        </div>
+
+        <div class="forget-password"><a class="forget-pass" href="#">Forgot Password?</a></div>
+
+        <br>
+        <button type="submit" class="log-butt">Log In</button>
+
+        
+        
+        <div class="last-row">
+         <p class="link-sign"> Need to WHC?<a  href="./create_account"> Sign up</a></p>
+        </div>
+    </form>
+    
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<head>
+
+        <!--Search section-->
+    <style>
+form.search input[type=text] {
+    margin-left: 5%;
+  padding: 8px;
+  font-size: 15px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+.search-butt {
+  float: left;
+  width: 10%;
+  padding: 8px;
+  background: #1488e7;
+  color: white;
+  font-size: 15px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+    </style>
+
+    <!--Register-->
+    <style>
+        .transfer-butt {
+  float: left;
+  width: 10%;
+  padding: 8px;
+  background: white;
+  color: black;
+  font-size: 15px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+    </style>
+
+    <!--edit plans section-->
+    <style>
+        #edit-plans {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    </style>
+
+    <!--plans-->
+    <style>
+    #single-plane{
+      background-color: lightblue;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    #cartButt{
+      background-color: blue;
+      width: auto;
+      border-radius: 12px;
+      border-color: white;
+      color: white;
+    }
+  </style>  
+    
+
+</head>
+
+<body>
+
+    
+
+    <!--welcome-->
+    <h1 style="margin-left: 10%;">Welcome</h1>
+    <h1 style="margin-left: 10%;">Hi,</h1>
+    <h2 style="margin-left: 10%;">User name: {{email}}</h2>
+    <h2 style="margin-left: 10%;">Full name: {{Fname}} {{Lname}}</h2>
+    <hr>
+
+
+
+    <section>
+        <!-- search Section-->
+        <div class="container">
+            <div class="row">
+               <form class="search col-12">       
+                   <input type="text" placeholder="Enter a question here to search our knowledgebase for answers..." name="search">
+                   <button class="search-butt" type="submit"><i>Search</i></button>                                                         
+                   <br>
+                   <br>
+                   <br>
+       
+             </form>
+            </div>
+        </div>
+     
+   </section>
+
+    <!--all plans-->
+   {{#each everyPlan}}
+        <div class="container">
+        <div class="row text-center">
+        <div>
+            <div class="d-flex justify-content-center">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" id="single-plane"> 
+                <i style="height: 50px; width: 50px; color: red;"class="fas fa-bicycle">{{this.logo}}</i>
+                <input type="hidden" name="ID" value="{{this._id}}">
+                <h2>{{this.planname}}</h2>
+                <p>{{this.plandesc}}</p>
+                 {{#if this.isPopular}}
+                  <h4><strong style="color: red;"><i class="fas fa-fire"></i>Most Popular</strong></h4>
+                {{/if}}
+                <span> as low as<strong style="color: red;">C${{this.planprice}}</strong>/mo</span>
+                <a href="/orderCart/{{this._id}}"><div><button class="cartButton" id="cartButt" type="submit"><i>Add to Cart</i></button></div></a>
+                <div style="text-align: left; margin-left: 30px;">
+                    <div><strong>{{this.planfetures}}</strong></div>
+                    <div><i class="fas fa-laptop"></i><strong>Single</strong> Website</div>
+                    <div><i class="fas fa-table"></i><strong>Unlimited</strong> Space & Traffic</div>
+                    <div><i class="fas fa-leaf"></i><strong>Powerd</strong> by renewable energy</div>
+                    <div><i class="fas fa-envelope"></i><strong>All-inculsive</strong> STARTER Email</div>
+                    <div><i class="fas fa-cloud"></i><strong>Standerd</strong> Hosting Features</div>      
+                    <div><i class="fas fa-exchange-alt"></i><strong>Free</strong> Site Migration</div>  
+                    <div><i class="fas fa-envelope"></i><strong>All-inculsive</strong> PRO Email</div>
+                    <div><i class="fas fa-cloud"></i><strong>Standerd</strong> Hosting Features</div>      
+                    <div><i class="fas fa-exchange-alt"></i><strong>Free</strong> Site Migration</div>
+                    <div><i class="fas fa-gem"></i><strong>Premium</strong> Features</div>
+                </div>
+                
+            </div>
+            </div>
+            
+        </div>
+    </div>
+        <br>
+        <br>
+        <br>
+    </div>
+    {{/each}}
+
+   <!--register Domain-->
+   <section>
+    <div class="container">
+        <div class="row">
+           
+            <form class="search col-12">       
+                <fieldset>
+                    <legend>Register a New Domain</legend>
+                    <input type="text" style="width: 70%;"  name="register">
+                    <button class="search-butt" type="submit"><i>Register</i></button>      
+                    <button class="transfer-butt" type="submit"><i>Transfer</i></button>                                                    
+                <br>
+                <br>
+                <br>
+                </fieldset>
+            </form>
+           
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+ 
+</section>
+
+    
+
+</body>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<head>
+
+        <!--edit plans section-->
+    <style>
+        #edit-plans {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    </style>
+
+    <!--plans-->
+    <style>
+    #single-plane{
+      background-color: lightblue;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    #cartButt{
+      background-color: blue;
+      width: auto;
+      border-radius: 12px;
+      border-color: white;
+      color: white;
+    }
+  </style>  
+    
+
+</head>
+
+<body>
+
+    
+
+    <!--welcome-->
+    <div style="background-color: thistle;">
+        <h1 style="margin-left: 10%;">Welcome Admin</h1>
+        <h1 style="margin-left: 10%;">Hi,</h1>
+        <h2 style="margin-left: 10%;">User name: {{email}}</h2>
+        <h2 style="margin-left: 10%;">Full name: {{Fname}} {{Lname}}</h2>
+        <hr>
+    </div>
+
+
+
+    <section>
+        <!-- edit plans Section-->
+        <div class="container" id="edit-plan">
+            <div class="row">
+                <br>
+                <br>
+               <a href="/editPlans"><i class="fas fa-edit fa-3x"></i>Edit plans</a>
+               <br>
+                <br>
+            </div>
+        </div>
+     
+   </section>
+
+   <!--plans-->
+  
+    {{!-- class="fas fa-bicycle" --}}
+
+    {{#each everyPlan}}
+        <div class="container">
+        <div class="row text-center">
+        <div>
+            <div class="d-flex justify-content-center">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" id="single-plane"> 
+                <i style="height: 50px; width: 50px; color: red;"class="fas fa-bicycle">{{this.logo}}</i>
+                <h2>{{this.planname}}</h2>
+                <p>{{this.plandesc}}</p>
+                 {{#if this.isPopular}}
+                  <h4><strong style="color: red;"><i class="fas fa-fire"></i>Most Popular</strong></h4>
+                {{/if}}
+                <span> as low as<strong style="color: red;">C${{this.planprice}}</strong>/mo</span>
+                
+                <div style="text-align: left; margin-left: 30px;">
+                    <div><strong>{{this.planfetures}}</strong></div>
+                    <div><i class="fas fa-laptop"></i><strong>Single</strong> Website</div>
+                    <div><i class="fas fa-table"></i><strong>Unlimited</strong> Space & Traffic</div>
+                    <div><i class="fas fa-leaf"></i><strong>Powerd</strong> by renewable energy</div>
+                    <div><i class="fas fa-envelope"></i><strong>All-inculsive</strong> STARTER Email</div>
+                    <div><i class="fas fa-cloud"></i><strong>Standerd</strong> Hosting Features</div>      
+                    <div><i class="fas fa-exchange-alt"></i><strong>Free</strong> Site Migration</div>  
+                    <div><i class="fas fa-envelope"></i><strong>All-inculsive</strong> PRO Email</div>
+                    <div><i class="fas fa-cloud"></i><strong>Standerd</strong> Hosting Features</div>      
+                    <div><i class="fas fa-exchange-alt"></i><strong>Free</strong> Site Migration</div>
+                    <div><i class="fas fa-gem"></i><strong>Premium</strong> Features</div>
+                </div>
+                <div class="d-flex justify-content-around">                   
+                    <a href="./updatePlans/{{this._id}}">
+                        <button class="cartButton" id="cartButt" type="submit"><i class="fas fa-pen-square"></i>Update plan</button>
+                    </a>
+                    <a href="./delete/{{this._id}}" onclick="return confirm('You want to delete this plan permanentaly?');">
+                        <button class="cartButton" id="cartButt" type="submit"><i class="fas fa-trash-alt"></i>Delete plan</button>
+                    </a>
+                </div>
+            </div>
+            </div>
+            
+        </div>
+    </div>
+        <br>
+        <br>
+        <br>
+    </div>
+    {{/each}}
+
+</body>

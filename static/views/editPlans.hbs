@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<head>
+
+
+    <style>      
+     
+
+.addButt {
+  background-color: blue;
+  width: 20%;
+  color: white;
+  padding-right: 10px;
+}
+
+.addButt:hover {
+  opacity: 0.7;
+}
+
+
+.form-control {
+  
+  border-radius: 1px;
+  color: inherit;
+  display: block;
+  padding: 6px 12px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.form-control {
+  box-shadow: none;
+}
+
+.content {
+  background-color: rosybrown;
+  color: inherit;
+  padding: 20px 20px 20px 20px;
+  border-color: #ffeb3b;
+  border-width: 1px ;
+  margin-bottom: 100px;
+}
+
+
+.header3 {
+  color: white;
+  text-align: center;
+}
+
+.field {
+  color: blue;
+  font-size: 20px;
+}
+
+.pass-str {
+  text-align: center;
+  color:black;
+}
+
+.tAndc {
+  text-align: center;
+  background-color: coral;
+  color: red;
+}
+
+.feedback-mess {
+  margin-left: 55%;
+  color: red;
+}
+
+.login-container {
+  max-width: 800px;
+  z-index: 100;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+
+
+.logoImg {
+  height: 80px;
+  width: 90px;
+  border-radius: 50%;
+  margin-left: 44%;
+}
+
+.required{
+  color: red;
+}
+
+.feedback-mess {
+  margin-left: 60%;
+  color: red;
+}
+
+
+
+.form-control {
+  
+  border-radius: 1px;
+  color: inherit;
+  display: block;
+  padding: 6px 12px;
+  width: 90%;
+  
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.form-control {
+  box-shadow: none;
+}
+
+  </style>
+
+
+</head>
+
+<body>
+    <a href="AdminDashboard" style="margin-left: 20px;"> AdminDashboard</a>
+    <br>
+    <br>
+
+
+    <div class="container" id="form-field">
+        
+      <div class="content">
+          {{#if errorMsg}}
+            <div
+                class="card text-white bg-danger"
+                style="margin-bottom: 10px; width:350px; margin-left: auto; margin-right: auto;">
+                <div class="card-header">Errors</div>
+                <div class="card-body">
+                    {{errorMsg}}
+                </div>
+            </div>
+        {{/if}}
+          <form action="/editPlans" method="POST">
+        <section>
+            <fieldset>
+          <legend class="text-center field">Add a new plan</legend>
+          <div class="container">
+          
+            <div class="row text-decoration">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <label for="planimg"><strong>Logo</strong></label>
+                <input
+                  type="file"
+                  class="form-control"
+                  placeholder="Plan img"
+                  accept="image/png, image/gif, image/jpeg"
+                  name="planimg"
+                  id="planimg"
+                />
+              </div>
+    
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <label for="planname"><strong>Plan Name</strong></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Plan Name"
+                  value="{{planDetails.pname}}"      
+                  name="planname"
+                  id="planname"          
+                />
+             </div>
+
+             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+               <label for="desc"><strong>Description</strong></label>
+               <input
+                 type="text"
+                 class="form-control"
+                 placeholder="description"
+                 value="{{planDetails.pdesc}}"
+                 name="desc"
+                 id="desc"
+               />
+             </div>
+
+             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <label for="price"><strong>Plan Price</strong></label>
+              <input
+               type="text"
+               class="form-control"
+               placeholder="1 months Price"
+               value="{{planDetails.pprice}}"
+               name="price"
+               id="price"
+              />
+             </div>
+   
+             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+               <label for="fetures"><strong>Fetures</strong></label>
+               <input
+                 type="text"
+                 class="form-control"
+                 placeholder="Fetures"
+                 value="{{planDetails.pfetures}}"
+                 name="fetures"
+                 id="fetures"
+               />
+             </div>
+            </div>              
+          </div>
+        </fieldset>
+        </section>
+        
+        
+        <button type="submit" class="addButt">Add</button>
+        
+        
+      </form>
+      </div>
+    </div>
+  </div>
+
+
+</body>

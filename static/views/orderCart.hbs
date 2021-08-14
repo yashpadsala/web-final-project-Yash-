@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        #left-part {
+            border: 2px solid black;
+            margin-bottom: 75px;
+            margin-right: 10px;
+            border-radius: 10px;
+        }
+        #card{
+            height: 200px;
+            
+            border: 1px solid black;
+            border-radius: 10px;
+            margin-left: 25px;
+            margin-right: 5px;
+            margin-bottom: 20px;
+        }
+        #right-part {
+            border: 2px solid black;
+            border-radius: 10px;
+            height: 350px;
+            margin-bottom: 75px;
+            background-color: lightgoldenrodyellow;
+        }
+        #row {
+            border: 1px solid black;
+            border-radius: 7px;
+            height: 70px;
+            background-color: white;
+        }
+        .discount-price {
+            background-color: yellow;
+        }
+        #cartButt{
+      background-color: blue;
+      width: auto;
+      border-radius: 12px;
+      border-color: white;
+      color: white;
+        }       
+        .plan-discount { 
+            color: red;
+           
+        }
+        .old-price {
+            text-decoration-line: line-through;
+        }
+        #card:hover {
+            background-color: blue;
+            opacity: 0.7;
+            color: red;
+        }
+       
+    </style>
+
+</head>
+
+<body>
+    
+    <div class="main-page">
+        <div class="container">
+        
+            {{#if thisPlan}}
+                <div class="row text-center">
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8" id="left-part">
+                <h1>Web Hosting: {{thisPlan.planname}}</h1>
+                <input type="hidden" name="ID" value="{{thisPlan._id}}">
+                <div class="row text-center">    
+                    <div class="col-xs-8 col-sm-3 col-md-3 col-lg-2 col-xl-2 card1" id="card">
+                        <p><span class="one-month">1</span> month</p>
+                        <h2>$<span class="primary-price">{{thisPlan.planprice}}</span></h2>
+                        <h5>/month</h5>
+                        
+                    </div>
+
+                    <div class="col-xs-8 col-sm-3 col-md-3 col-lg-2 col-xl-2 card12" id="card">
+                        <p>12 months</p>   
+                        <h2>$<span class="price12"></span></h2>
+                        <h5>/month</h5>
+                        <p class="discount-price">SAVE 37%</p>
+                        <p class="old-price">${{thisPlan.planprice}}</p>   
+                    </div>
+
+                    <div class="col-xs-8 col-sm-3 col-md-3 col-lg-2 col-xl-2 card24" id="card">
+                        <p>24 months</p>
+                        <h2>$<span class="price24"></span></h2>
+                        <h5>/month</h5>
+                        <p class="discount-price">SAVE 40%</p>
+                        <p class="old-price">${{thisPlan.planprice}}</p>                   
+                    </div>
+
+                    <div class="col-xs-8 col-sm-3 col-md-3 col-lg-2 col-xl-2 card36" id="card">
+                        <p>36 months</p>
+                        <h2>$<span class="price36"></span></h2>
+                        <h5>/month</h5>
+                        <p class="discount-price">SAVE 43%</p>
+                        <p class="old-price">${{thisPlan.planprice}}</p>
+                    </div>
+                                       
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 col-xl-3" id="right-part">
+                <h1>Order Summary</h1>
+                
+                    
+                    <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-xl-11" id="row">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <h4><span class="plan-name">{{thisPlan.planname}}</span></h4>
+                                <p class="plan-month"><span class="sub-time">0 months</span></p>
+                            </div>
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                                <p><span class="plan-price">$<span class="sub-price">0.00</span></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-xl-11" id="row">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <p class="plan-promo">Promo: WEBENT</p>
+                            </div>
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                                <p class="plan-discount"><strong>-5%</strong></p>
+                            </div>
+                        </div>
+                        
+                        
+                                            
+                    </div>
+
+                    <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-xl-11" id="row">
+                        <div class="row">
+                            
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <p><strong class="ptotal">Total</strong></p>
+                            </div>
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                                <p>$<span style="text-align: right;" class="total-bill" id="total-bill"><strong>0.00</strong></span></p>
+                               
+                            </div>
+                            
+                        </div>
+                         
+                        
+                                            
+                    </div>
+
+                    <p><i class="fas fa-flag"></i>All Prices are in CAD</p>
+                    
+                    <a href="/checkout"><button class="cartButton" id="cartButt" type="submit">Checkout Now</button> </a>
+                                       
+                
+            </div>
+            </div>
+            {{/if}}
+        </div>           
+    </div>
+    </div>
+
+    <script src="../js/calculation.js"></script>
+</body>

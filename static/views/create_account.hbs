@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Registration WHC</title>
+    <!--bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+     
+    <style>      
+     
+
+.signButt {
+  background-color: blue;
+  width: 100%;
+  color: white;
+}
+
+.signButt:hover {
+  opacity: 0.7;
+}
+
+
+.form-control {
+  
+  border-radius: 1px;
+  color: inherit;
+  display: block;
+  padding: 6px 12px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.form-control {
+  box-shadow: none;
+}
+
+.content {
+  background-color: #ffffff;
+  color: inherit;
+  padding: 20px 20px 20px 20px;
+  border-color: #ffeb3b;
+  border-width: 1px ;
+  margin-bottom: 100px;
+}
+
+.page {
+  background: linear-gradient(#4f2ad1, #d14053);
+}
+
+.header3 {
+  color: white;
+  text-align: center;
+}
+
+.field {
+  color: blue;
+  font-size: 20px;
+}
+
+.pass-str {
+  text-align: center;
+  color:black;
+}
+
+.tAndc {
+  text-align: center;
+  background-color: coral;
+  color: red;
+}
+
+.feedback-mess {
+  margin-left: 55%;
+  color: red;
+}
+
+.login-container {
+  max-width: 800px;
+  z-index: 100;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+
+
+.logoImg {
+  height: 80px;
+  width: 90px;
+  border-radius: 50%;
+  margin-left: 44%;
+}
+
+.required{
+  color: red;
+}
+
+.feedback-mess {
+  margin-left: 60%;
+  color: red;
+}
+
+  </style>
+
+</head>
+
+<body class="page">
+  <div class="login-container">
+    <div>
+      <h1>
+        <a href="/"><img src="images/newLogo.jpg" class="logoImg"/></a>
+      </h1>
+      
+    </div>
+    <h3 class="header3">Create an Account</h3>
+
+    {{#if registerErrorMsg}}
+    <div
+      class="card text-white bg-danger"
+      style="margin-bottom: 10px; width:800px"
+    >
+      <div class="card-header">Errors</div>
+      <div class="card-body">
+        This User is already exist, Please login your account or create with new user.
+      </div>
+    </div>
+  {{/if}}
+
+    <div class="content">
+      <form action="/create_account" method="POST" >
+        <fieldset>
+          <legend class="text-center field">Personal Information</legend>
+          <div class="container">
+          
+            <div class="row text-decoration">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <input
+                  type="text"
+                  class="form-control {{fieldValidity.[0].valid}}"
+                  placeholder="First Name"
+                  value="{{userRegister.returnfname}}"
+                  name="firstname"
+                  id="firstname"
+                />
+                <div id="validationServerUsernameFeedback" class="invalid-feedback feedback-mess">
+            {{errorReplay.firstname}}</div>
+              </div>
+    
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <input
+                  type="text"
+                  class="form-control {{fieldValidity.[1].valid}}"
+                  placeholder="Last Name"
+                  value="{{userRegister.returnlname}}"      
+                  name="lastname"
+                  id="lastname"          
+                />
+                <div id="validationServerUsernameFeedback" class="invalid-feedback feedback-mess">
+            {{errorReplay.lastname}}</div>
+             </div>
+
+             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <input
+               type="email"
+               class="form-control {{fieldValidity.[2].valid}}"
+               placeholder="Email"
+               value="{{userRegister.returnemail}}"
+               name="email"
+               id="email"
+              />
+              <div id="validationServerUsernameFeedback" class="invalid-feedback feedback-mess">
+            {{errorReplay.email}}</div>
+             </div>
+   
+             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+               <input
+                 type="tel"
+                 class="form-control {{fieldValidity.[3].valid}}"
+                 placeholder="Phone Number"
+                 value="{{userRegister.returnphone}}"
+                 name="phonenumber"
+                 id="phonenumber"
+               />
+               <div id="validationServerUsernameFeedback" class="invalid-feedback feedback-mess">
+            {{errorReplay.phonenumber}}</div>
+             </div>
+            </div>              
+          </div>
+        </fieldset>
+        
+        
+        <fieldset>
+          <legend class="text-center field">Billing Address</legend>
+          <div class="container">
+            <div class="row text-decoration">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Company Name(Optional)"    
+                  value="{{userRegister.returnbilladd}}"
+                  name="billingaddress"
+                  id="billingaddress"
+                />
+              </div>
+      
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <input
+                  type="text"
+                  class="form-control {{fieldValidity.[4].valid}}"
+                  placeholder="Street Address" 
+                  value="{{userRegister.returnstadd1}}"
+                  id="stadd1"
+                  name="stadd1"   
+                />
+                <div id="validationServerUsernameFeedback" class="invalid-feedback feedback-mess">
+            {{errorReplay.stadd1}}</div>
+              </div>
+      
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Street Address2"  
+                  value="{{userRegister.returnstadd2}}"
+                  id="stadd2"
+                  name="stadd2"     
+                />
+              </div>
+      
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <input
+                  type="text"
+                  class="form-control {{fieldValidity.[5].valid}}"
+                  placeholder="City"
+                  value="{{userRegister.returncity}}"
+                  id="city"
+                  name="city"
+                />
+                <div id="validationServerUsernameFeedback" class="invalid-feedback feedback-mess">
+            {{errorReplay.city}}</div>
+              </div>
+      
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <input
+                  type="text"
+                  class="form-control {{fieldValidity.[6].valid}}"
+                  placeholder="Postcode"
+                  value="{{userRegister.returnpostalcode}}"
+                  id="postalcode"
+                  name="postalcode"
+                />
+                <div id="validationServerUsernameFeedback" class="invalid-feedback feedback-mess">
+            {{errorReplay.postalcode}}</div>
+              </div>
+
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Province"
+                  value="{{userRegister.returnprovince}}"
+                  id="province"
+                  name="province"
+                />
+              </div>
+      
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <input
+                  type="text"
+                  class="form-control {{fieldValidity.[7].valid}}"
+                  placeholder="Country"    
+                  value="{{userRegister.returncountry}}"
+                  id="country"
+                  name="country"
+                />
+                <div id="validationServerUsernameFeedback" class="invalid-feedback feedback-mess">
+            {{errorReplay.country}}</div>
+              </div>
+
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Tax ID (Optional)" 
+                  value="{{userRegister.returntax}}"
+                  id="taxid"
+                  name="taxid"   
+                />
+              </div>
+            </div>
+
+          </div>
+        
+        </fieldset>
+
+        <fieldset>
+          <legend class="text-center field">Account Security </legend>
+          <div class="container">
+            <div class="row text-decoration">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <input
+                  type="password"
+                  class="form-control {{fieldValidity.[8].valid}}"
+                  placeholder="password"
+                  value="{{userRegister.returnpass}}"
+                  id="password"
+                  name="password"
+                />
+                <div id="validationServerUsernameFeedback" class="invalid-feedback feedback-mess">
+            {{errorReplay.password}}</div>
+              </div>
+      
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <input
+                  type="password"
+                  class="form-control {{fieldValidity.[9].valid}}"
+                  placeholder="Comfirm Password"
+                  value="{{userRegister.returnconfpass}}"
+                  id="confpassword"
+                  name="confpassword"
+                />
+                <div id="validationServerUsernameFeedback" class="invalid-feedback feedback-mess">
+            {{errorReplay.confpassword}}</div>
+              </div>
+            </div>
+          </div>
+        
+        
+        <div class="pass-str"><p>Password Strength: Please Enter a Password</p></div>
+      </fieldset>
+
+      <h3 class="tAndc">Term of Service</h3>
+      <input
+      type="checkbox" 
+      id="terms" 
+      name="terms">
+      <label for="terms">By submitting this order, you agree to the Terms of Service and Privacy Policy. 
+        You agree that WHC will automatically attempt to renew your services prior to their next due 
+        date unless you request otherwise from your Client Area.</label><br><br>
+
+
+        <button type="submit" class="signButt">Register</button>
+        Already a Client?<a  href="./sign_in"> Log In</a>
+      </form>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
